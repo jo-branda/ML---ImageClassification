@@ -5,9 +5,8 @@ var video;
 var label = '';
 
 // Best buttons in the market 
-var bt_smile;
-var bt_monster;
 var bt_train;
+var slider;
 
 function modelReady(){
     console.log('Model is ready!');
@@ -41,23 +40,13 @@ function gotResults(error,results){
 }
 function setup(){
     createCanvas(640,550);
-    // tucano = createImg('img/tucano.jpg',imgReady);
     video = createCapture(VIDEO);
     video.hide();
     background(0);
-    // tucano.hide();
     mobilenet = ml5.featureExtractor('MobileNet', modelReady);
-    classifier = mobilenet.classification(video, videoReady);
+    classifier = mobilenet.regression(video, videoReady);
 
-    bt_smile = createButton('Smile');
-    bt_smile.mousePressed(function(){
-        classifier.addImage('Yellow Smile');
-    });
-
-    bt_monster = createButton('Monster');
-    bt_monster.mousePressed(function(){
-        classifier.addImage('Orange Monster');
-    });
+    slider = createSlider(0 ,1, 0.5, 0.01);
 
     bt_train = createButton('Train Model');
     bt_train.mousePressed(function(){
@@ -74,6 +63,3 @@ function draw(){
     text(label, 10, height - 20);
 }
 
-// function imgReady(){
-//     image(tucano,0,0,width,height);
-// }
