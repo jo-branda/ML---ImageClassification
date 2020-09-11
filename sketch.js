@@ -9,6 +9,7 @@ var inputLabel;
 // Best buttons in the market
 var bt_train;
 var bt_add;
+var bt_save;
 
 function modelReady() {
   console.log("Model is ready!");
@@ -61,6 +62,11 @@ function setup() {
     console.log("Training...");
     label = "Training...";
     classifier.train(whileTraining);
+  });
+
+  bt_save = createButton("Save");
+  bt_save.mousePressed(function () {
+    classifier.save();
   });
 }
 
