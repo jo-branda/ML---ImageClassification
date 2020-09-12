@@ -1,8 +1,7 @@
 var mobilenet;
 var classifier;
-var tucano;
 var video;
-var label = "";
+var label = "Add your images and train";
 var value = 0;
 
 var inputLabel;
@@ -10,6 +9,7 @@ var inputLabel;
 var bt_train;
 var bt_add;
 var bt_save;
+var bt_load;
 
 function modelReady() {
   console.log("Model is ready!");
@@ -32,7 +32,6 @@ function gotResults(error, results) {
   if (error) {
     console.error(error);
   } else {
-    console.log(results);
     label = results[0].label;
     classifier.classify(gotResults);
     //var prob = results[0].confidence;
@@ -67,6 +66,11 @@ function setup() {
   bt_save = createButton("Save");
   bt_save.mousePressed(function () {
     classifier.save();
+  });
+
+  bt_load = createButton("Load");
+  bt_load.mousePressed(function () {
+    // classifier.save();
   });
 }
 
