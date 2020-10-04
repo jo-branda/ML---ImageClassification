@@ -1,16 +1,16 @@
 var mobilenet;
 var classifier;
 var video;
-var label = "Add your images and train";
+var label = "Add your images and train the Model";
 var value = 0;
 
 var inputLabel;
 // Best buttons in the market
 var bt_train;
 var bt_add;
-var bt_save;
-var bt_load;
-
+// var bt_save;
+// var bt_load;
+// var is_modelLoaded = false;
 function modelReady() {
   console.log("Model is ready!");
 }
@@ -63,15 +63,20 @@ function setup() {
     classifier.train(whileTraining);
   });
 
-  bt_save = createButton("Save");
-  bt_save.mousePressed(function () {
-    classifier.save();
-  });
+  // bt_save = createButton("Save");
+  // bt_save.mousePressed(function () {
+  //   classifier.save();
+  // });
 
-  bt_load = createButton("Load");
-  bt_load.mousePressed(function () {
-    // classifier.save();
-  });
+  // bt_load = createButton("Load");
+  // bt_load.mousePressed(function () {
+  //   is_modelLoaded = true;
+  //   bt_save.attribute("disabled", true);
+  //   bt_add.attribute("disabled", true);
+  //   bt_train.attribute("disabled", true);
+  //   inputLabel.attribute("disabled", true);
+  //   // classifier.save();
+  // });
 }
 
 function draw() {
